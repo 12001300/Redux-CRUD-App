@@ -4,6 +4,7 @@ import "./App.css"
 import Home from './Home'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Create from './Create'
+import Update from './Update'
 
 export default function App() {
  
@@ -12,6 +13,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home/>}></Route>
       <Route path="/create" element={<Create/>}></Route>
+      <Route path="/edit/:id" element={<Update/>}></Route>
     </Routes>
     
     </BrowserRouter>
