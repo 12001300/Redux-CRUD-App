@@ -4,9 +4,18 @@ import "./index.css"
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux"
-import store from "./Redux/store";
+import {configureStore} from "@reduxjs/toolkit"
+import userReducer from "./UserReducer"
+const store=configureStore({
+  reducer:{
+    user: userReducer
+  }
+})
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
+<Provider store={store} >
 
 
 
@@ -14,6 +23,7 @@ root.render(
 <App />
   </StrictMode>
 
+</Provider> 
 
 
 
