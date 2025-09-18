@@ -1,9 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {Link, useNavigate} from "react-router-dom"
+import { DeleteUser } from './UserReducer'
 export default function Home() {
+    const dispatch=useDispatch()
     const users=useSelector(state=>state.user)
-  
+  const handleDelete=(id)=>{
+    dispatch(DeleteUser({id:id}))
+
+  }
   return (
     <div className='container'>
         <h2>CRUD App with JSON Server </h2>
@@ -27,7 +32,7 @@ export default function Home() {
             <td>{user.email}</td>
             <td>
                 <Link to={`/edit/${user.id}`} className='btn btn-sm btn-primary'>Edit</Link>
-                <button className='btn btn-sm btn-danger ms-2'>Delete</button>
+                <button onClick={()=>handleDelete(user.id)} className='btn btn-sm btn-danger ms-2'>Delete</button>
                 
             </td>
         </tr>

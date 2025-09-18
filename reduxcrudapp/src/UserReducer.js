@@ -15,9 +15,17 @@ const userSlice=createSlice({
                 uu.name=name
                 uu.email=email
             }
+        },
+        DeleteUser:(state,action)=>{
+           const {id}=action.payload
+           const uu =state.find(f=>f.id==id)
+           if(uu){
+           return state.filter(f=> f.id!=id)
+           }
+
         }
 
     }
 })
-export const {AddUser,UpdateUser}=userSlice.actions
+export const {AddUser,UpdateUser,DeleteUser}=userSlice.actions
 export default userSlice.reducer
